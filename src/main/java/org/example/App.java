@@ -11,6 +11,7 @@ public class App
     public static void main( String[] args )
     {
         Pipeline pipeline = Pipeline.create();
-        System.out.println( "Hello World!" );
+        pipeline.run();
+        System.out.println( "Pipeline run successfully!" );
     }
 }
