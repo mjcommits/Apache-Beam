@@ -13,11 +13,13 @@ import java.util.List;
 public class InMemoryExample {
     public static void main(String[] args) {
         Pipeline pipeline = Pipeline.create();
-        //Object list converted to PCollection List
+        //list<Object> converted to PCollection List
         PCollection<Customer> customerPCollection = pipeline.apply(Create.of(getCustomers()));
-        //PCollection<Object> converted to PCollection<String>
-        PCollection<String> customerStringPCollection = customerPCollection.apply(MapElements.into(TypeDescriptors.strings()).via(Customer::getId));
-        customerStringPCollection.apply(TextIO.write().to("src/main/java/resources/customerIDList.csv").withNumShards(1).withSuffix(".csv"));
+        //PCollection<Object> converted PCollection<Object> to PCollection<String>
+        PCollection<String> customerStringPCollection = customerPCollection.apply(MapElements.into(TypeDescriptors.strings()).via(Customer::getName));
+        //Element wise transformation example
+        PCollection<String> capitalListPCollection = customerStringPCollection.apply(MapElements.into(TypeDescriptors.strings()).via(obj -> obj.toUpperCase()));
+        capitalListPCollection.apply(TextIO.write().to("src/main/java/resources/customerIDList.csv").withNumShards(1).withSuffix(".csv"));
         pipeline.run();
     }
     public static List<Customer> getCustomers(){
