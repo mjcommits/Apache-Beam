@@ -30,7 +30,7 @@ class User extends SimpleFunction<String, String> {
 public class MapElementsUsingSimpleFunction {
     public static void main(String[] args) {
         Pipeline pipeline = Pipeline.create();
-        PCollection<String> lines = pipeline.apply(TextIO.read().from("src/main/java/resources/inputfileColumns.csv"));
+        PCollection<String> lines = pipeline.apply(TextIO.read().from("src/main/java/resources/InputfileColumns.csv"));
         PCollection<String> linesTransformingSex = lines.apply(MapElements.via(new User()));
         linesTransformingSex.apply("Writing file", TextIO.write().to("src/main/java/resources/output/SexTransformedColumns.csv").withNumShards(1).withSuffix("csv"));
         pipeline.run();
