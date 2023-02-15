@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Customer implements Serializable {
     String id;
@@ -30,5 +31,17 @@ public class Customer implements Serializable {
     @Override
     public String toString() {
         return this.id + " " + this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer customer)) return false;
+        return getId().equals(customer.getId()) && getName().equals(customer.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName());
     }
 }
