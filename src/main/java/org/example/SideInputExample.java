@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class SideInputExample {
     public static void main(String[] args) {
         Pipeline pipeline = Pipeline.create();
-        PCollection<KV<String, String>> pCollectionKV = pipeline.apply(TextIO.read().from("src/main/java/resources/CustomerReplaced.txt"))
+        PCollection<KV<String, String>> pCollectionKV = pipeline.apply(TextIO.read().from("src/main/java/resources/input/CustomerReplaced.txt"))
                 .apply(ParDo.of(new DoFn<String, KV<String, String>>() {
                     @ProcessElement
                     public void process(ProcessContext context) {

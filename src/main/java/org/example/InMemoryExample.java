@@ -6,6 +6,7 @@ import org.apache.beam.sdk.transforms.Create;
 import org.apache.beam.sdk.transforms.MapElements;
 import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.TypeDescriptors;
+import org.example.DTO.Customer;
 
 import java.util.ArrayList;
 import java.util.List;

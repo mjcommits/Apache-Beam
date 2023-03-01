@@ -27,7 +27,7 @@ class User extends SimpleFunction<String, String> {
     }
 }
 
-public class MapElementsUsingSimpleFunction {
+public class MapElementsUsingSimpleFunctionExample {
     public static void main(String[] args) {
         Pipeline pipeline = Pipeline.create();
         PCollection<String> lines = pipeline.apply(TextIO.read().from("src/main/java/resources/InputfileColumns.csv"));

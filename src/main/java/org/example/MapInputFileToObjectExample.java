@@ -5,10 +5,11 @@ import org.apache.beam.sdk.io.TextIO;
 import org.apache.beam.sdk.transforms.MapElements;
 import org.apache.beam.sdk.transforms.SimpleFunction;
 import org.apache.beam.sdk.values.PCollection;
+import org.example.DTO.Customer;
 
 import java.util.regex.Pattern;
 
-public class MapInputFileToObject {
+public class MapInputFileToObjectExample {
     public static void main(String[] args) {
         Pipeline pipeline = Pipeline.create();
         PCollection<String> linesOfFilePCollection = pipeline.apply(TextIO.read().from("src/main/java/resources/CustomerFile.txt"));
